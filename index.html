@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4477d0">
+
+<title>NextGen eQMS Video Series | Three Episodes. One Digital Quality Journey.</title>
+
+<meta name="description"
+content="Watch the three-part Simploud NextGen eQMS video series covering Document Control, Supplier Management and Customer Success.">
+
+<!-- QUALITYSCAPE BROWSER TAB ICON -->
+
+<link rel="icon"
+href="https://www.quality-scape.com/skin/images/en_ico.ico">
+
+<link rel="apple-touch-icon"
+href="https://www.quality-scape.com/skin/images/en_ico.ico">
+
+<!-- LINKEDIN, WHATSAPP AND SOCIAL MEDIA PREVIEW -->
+
+<meta property="og:type" content="website">
+
+<meta property="og:site_name"
+content="QualityScape | Simploud">
+
+<meta property="og:title"
+content="NextGen eQMS | Three Episodes. One Digital Quality Journey.">
+
+<meta property="og:description"
+content="Discover Simploud through three short episodes on Document Control, Supplier Management and Customer Success.">
+
+<meta property="og:url"
+content="https://qualityscape.github.io/NextGen_eQMS/">
+
+<meta property="og:image"
+content="https://qualityscape.github.io/NextGen_eQMS/og-preview.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta property="og:image:alt"
+content="NextGen eQMS video series: Document Control, Supplier Management and Customer Success">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title"
+content="NextGen eQMS | Three Episodes. One Digital Quality Journey.">
+
+<meta name="twitter:description"
+content="A three-part Simploud eQMS video series from QualityScape.">
+
+<meta name="twitter:image"
+content="https://qualityscape.github.io/NextGen_eQMS/og-preview.png">
+
+<style>
+
+/* GENERAL */
+
+:root {
+  --blue: #4477d0;
+  --ink: #18304c;
+  --muted: #617389;
+  --line: #dce6f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f9fd;
+  color: var(--ink);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+}
+
+/* BLUE TITLE BANNER */
+
+.hero {
+  background: var(--blue);
+  color: #ffffff;
+  text-align: center;
+  padding: 56px 18px 60px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 15px 0 12px;
+  font-size: clamp(29px, 4.2vw, 47px);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: .01em;
+}
+
+.hero p {
+  margin: 0;
+  font-size: clamp(17px, 2.2vw, 20px);
+}
+
+/* VIDEO GALLERY */
+
+main {
+  width: min(1002px, calc(100% - 36px));
+  margin: 36px auto 48px;
+}
+
+/* THREE CENTRED VIDEO CARDS */
+
+.cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 310px));
+
+  gap: 36px;
+
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* INDIVIDUAL CARD */
+
+.card {
+  width: 100%;
+
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 25px rgba(25, 68, 117, .06);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* VIDEO PLAYER */
+
+.player {
+  position: relative;
+
+  width: 100%;
+  height: 300px;
+
+  background: var(--blue);
+  overflow: hidden;
+}
+
+/* THUMBNAIL */
+
+.poster {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  padding: 0;
+
+  cursor: pointer;
+  background: var(--blue);
+}
+
+/* SHOW COMPLETE THUMBNAIL WITHOUT CROPPING */
+
+.poster img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  display: block;
+  background: var(--blue);
+
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* PLAY BUTTON */
+
+.play {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+  background: #ffffff;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 4px 18px #0005;
+
+  pointer-events: none;
+}
+
+.play svg {
+  width: 25px;
+  height: 25px;
+
+  fill: #245aab;
+  margin-left: 4px;
+}
+
+/* VIDEO */
+
+video {
+  display: none;
+
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: #000000;
+  object-fit: contain;
+}
+
+/* VIDEO ACTIVE STATE */
+
+.player.active video {
+  display: block;
+}
+
+.player.active .poster {
+  display: none;
+}
+
+/* EPISODE INFORMATION */
+
+.details {
+  padding: 19px 19px 22px;
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 0 0 9px;
+}
+
+.details p {
+  font-size: 14px;
+  line-height: 1.6;
+
+  color: var(--muted);
+
+  margin: 0 0 18px;
+  flex: 1;
+}
+
+/* WATCH EPISODE BUTTON */
+
+.watch {
+  align-self: flex-start;
+
+  background: #ffffff;
+  border: 1px solid var(--blue);
+
+  color: #245aab;
+
+  border-radius: 7px;
+  padding: 10px 13px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.watch:hover,
+.watch:focus-visible {
+  background: #eff5ff;
+}
+
+/* WHATSAPP CALL TO ACTION */
+
+.cta {
+  text-align: center;
+  margin: 34px auto 0;
+}
+
+.cta a {
+  display: inline-block;
+
+  border-radius: 9px;
+  padding: 14px 24px;
+
+  background: #4d7cff;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  transition: background .2s;
+}
+
+.cta a:hover,
+.cta a:focus-visible {
+  background: #325fdd;
+}
+
+/* TABLET VIEW */
+
+@media (max-width: 850px) {
+
+  main {
+    width: min(656px, calc(100% - 32px));
+  }
+
+  .cards {
+    grid-template-columns:
+      repeat(2, minmax(0, 310px));
+
+    gap: 28px;
+  }
+
+}
+
+/* MOBILE VIEW */
+
+@media (max-width: 620px) {
+
+  .hero {
+    padding: 45px 15px 48px;
+  }
+
+  main {
+    width: min(310px, calc(100% - 28px));
+    margin: 24px auto 35px;
+  }
+
+  .cards {
+    grid-template-columns: minmax(0, 310px);
+    gap: 24px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BLUE TITLE BANNER -->
+
+<header class="hero">
+
+  <div class="eyebrow">
+    NextGen eQMS Video Series
+  </div>
+
+  <h1>
+    Three Episodes. One Digital Quality Journey.
+  </h1>
+
+  <p>
+    Document Control &bull; Supplier Management &bull; Customer Success
+  </p>
+
+</header>
+
+
+<!-- VIDEO GALLERY -->
+
+<main>
+
+<div class="cards">
+
+
+<!-- EPISODE 1 — DOCUMENT CONTROL -->
+
+<article class="card">
+
+  <div class="player">
+
+    <button
+      class="poster"
+      type="button"
+      aria-label="Play Episode 1: Document Control">
+
+      <img
+        src="https://qualityscape.github.io/episode-1-documents/thumbnail1.png"
+        alt="Episode 1 Document Control thumbnail"
+        draggable="false">
+
+      <span class="play" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M7 4.5v15l12-7.5z"/>
+        </svg>
+
+      </span>
+
+    </button>
+
+    <video
+      controls
+      playsinline
+      preload="none"
+      controlsList="nodownload noplaybackrate noremoteplayback"
+      disablePictureInPicture
+      disableRemotePlayback
+      oncontextmenu="return false"
+      data-src="https://qualityscape.github.io/episode-1-documents/ep1-doc-control.mp4"
+      aria-label="Episode 1 Document Control video">
+    </video>
+
+  </div>
+
+  <div class="details">
+
+    <h2>Episode 1: Document Control</h2>
+
+    <p>
+      Follow Invision's Document Controller as she takes
+      quality documents digital, bringing greater structure
+      and control to everyday QMS processes.
+    </p>
+
+    <button class="watch" type="button">
+      Watch Episode &rarr;
+    </button>
+
+  </div>
+
+</article>
+
+
+<!-- EPISODE 2 — SUPPLIER MANAGEMENT -->
+
+<article class="card">
+
+  <div class="player">
+
+    <button
+      class="poster"
+      type="button"
+      aria-label="Play Episode 2: Supplier Management">
+
+      <img
+        src="https://qualityscape.github.io/episode-2-suppliers/thumbnail2.png"
+        alt="Episode 2 Supplier Management thumbnail"
+        draggable="false">
+
+      <span class="play" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M7 4.5v15l12-7.5z"/>
+        </svg>
+
+      </span>
+
+    </button>
+
+    <video
+      controls
+      playsinline
+      preload="none"
+      controlsList="nodownload noplaybackrate noremoteplayback"
+      disablePictureInPicture
+      disableRemotePlayback
+      oncontextmenu="return false"
+      data-src="https://qualityscape.github.io/episode-2-suppliers/ep2-supplier-quality.mp4"
+      aria-label="Episode 2 Supplier Management video">
+    </video>
+
+  </div>
+
+  <div class="details">
+
+    <h2>Episode 2: Supplier Management</h2>
+
+    <p>
+      See how Invision's supplier quality team brings
+      supplier records and related quality activities
+      together through a connected eQMS.
+    </p>
+
+    <button class="watch" type="button">
+      Watch Episode &rarr;
+    </button>
+
+  </div>
+
+</article>
+
+
+<!-- EPISODE 3 — CUSTOMER SUCCESS -->
+
+<article class="card">
+
+  <div class="player">
+
+    <button
+      class="poster"
+      type="button"
+      aria-label="Play Episode 3: Customer Success">
+
+      <img
+        src="https://qualityscape.github.io/episode-3-customer-success/thumbnail3.png"
+        alt="Episode 3 Customer Success thumbnail"
+        draggable="false">
+
+      <span class="play" aria-hidden="true">
+
+        <svg viewBox="0 0 24 24">
+          <path d="M7 4.5v15l12-7.5z"/>
+        </svg>
+
+      </span>
+
+    </button>
+
+    <video
+      controls
+      playsinline
+      preload="none"
+      controlsList="nodownload noplaybackrate noremoteplayback"
+      disablePictureInPicture
+      disableRemotePlayback
+      oncontextmenu="return false"
+      data-src="https://qualityscape.github.io/episode-3-customer-success/ep3-customer-success.mp4"
+      aria-label="Episode 3 Customer Success video">
+    </video>
+
+  </div>
+
+  <div class="details">
+
+    <h2>Episode 3: Customer Success</h2>
+
+    <p>
+      Discover Simploud's Customer Success approach
+      and how it helps organisations get started and
+      stay supported throughout their digital quality journey.
+    </p>
+
+    <button class="watch" type="button">
+      Watch Episode &rarr;
+    </button>
+
+  </div>
+
+</article>
+
+
+</div>
+
+
+<!-- WHATSAPP CONTACT BUTTON -->
+
+<div class="cta">
+
+  <a
+    href="https://wa.me/6597720003?text=Hi%20Melvin%2C%20I%20came%20across%20your%20NextGen%20eQMS%20Video%20Series%20and%20would%20like%20to%20know%20more."
+    target="_blank"
+    rel="noopener noreferrer">
+
+    Keen to know more?
+
+  </a>
+
+</div>
+
+</main>
+
+
+<!-- VIDEO PLAYBACK AND PROTECTION -->
+
+<script>
+
+const players = [
+  ...document.querySelectorAll('.player')
+];
+
+const videos = players.map(
+  player => player.querySelector('video')
+);
+
+
+// PLAY SELECTED EPISODE
+
+function playEpisode(player) {
+
+  const video = player.querySelector('video');
+
+  // Pause other episodes.
+
+  videos.forEach(other => {
+
+    if (other !== video) {
+      other.pause();
+    }
+
+  });
+
+  // Load video only when selected.
+
+  if (!video.src) {
+    video.src = video.dataset.src;
+  }
+
+  player.classList.add('active');
+
+  video.play().catch(() => {});
+
+}
+
+
+// THUMBNAIL CLICK EVENTS
+
+players.forEach(player => {
+
+  const video = player.querySelector('video');
+
+  player.querySelector('.poster')
+    .addEventListener('click', () => {
+
+      playEpisode(player);
+
+    });
+
+
+  // Only one video plays at a time.
+
+  video.addEventListener('play', () => {
+
+    videos.forEach(other => {
+
+      if (other !== video) {
+        other.pause();
+      }
+
+    });
+
+  });
+
+
+  // Disable video right-click.
+
+  video.addEventListener('contextmenu', event => {
+
+    event.preventDefault();
+
+  });
+
+});
+
+
+// WATCH EPISODE BUTTONS
+
+document.querySelectorAll('.card')
+  .forEach(card => {
+
+    card.querySelector('.watch')
+      .addEventListener('click', () => {
+
+        playEpisode(
+          card.querySelector('.player')
+        );
+
+      });
+
+  });
+
+
+// DISABLE THUMBNAIL RIGHT-CLICK AND DRAGGING
+
+document.querySelectorAll('.poster img')
+  .forEach(img => {
+
+    img.addEventListener('contextmenu', event => {
+
+      event.preventDefault();
+
+    });
+
+    img.addEventListener('dragstart', event => {
+
+      event.preventDefault();
+
+    });
+
+  });
+
+</script>
+
+</body>
+
+</html>
